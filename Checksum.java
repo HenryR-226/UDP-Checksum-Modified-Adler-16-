@@ -1,5 +1,5 @@
 /**
-Modifed Adler-32 checksum
+Modifed Adler-16 checksum, generates 2 bye integer
 	Cast all char to int, this will be it's ASCII value. Take modulus of this int with 32749. This is the highest 2 byte signed integer that is prime. 
 	Return this int as checksum.
 
@@ -8,20 +8,21 @@ Modifed Adler-32 checksum
 */
 
 public class Checksum {
+
+	short asciiSum = 0;						  
+	int asciiSumInt=0;					//Max int is 2,147,000,000, big enough for summation of 500 char
+	short checksumVal;
+	int checksumValInt;					//ChecksumVal argument but as 4 bytes, cast to 2 as final step
+	
 	/**@author Henry Rheault
 	Generates Checksum for given message when called.
 	
 	Cast all char to int, this will be it's ASCII value. Take modulus of this int with 32749. This is the highest 2 byte signed integer that is prime. 
 	Return this int as checksum.
 
-	*/
-	
-	
-	short asciiSum = 0;						  
-	int asciiSumInt=0;					//Max int is 2,147,000,000, big enough for summation of 500 char
-	short checksumVal;
-	int checksumValInt;					//ChecksumVal argument but as 4 bytes, cast to 2 as final step
-	
+	*/	
+
+
 	public short getChecksum(byte message[], short packetLength) {
 		
 		//summate entire message ascii value
