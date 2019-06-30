@@ -1,7 +1,7 @@
 /**
-Modifed Adler-16 checksum, generates 2 bye integer
+Modifed Adler-16 checksum, generates 2 byte integer
 	Cast all char to int, this will be it's ASCII value. Take modulus of this int with 32749. This is the highest 2 byte signed integer that is prime. 
-	Return this int as checksum.
+	Return this int as checksum to be attached to packet and sent.
 
 	Maximum ASCII value is 255. 255 * 500 (max design packet length) = 127,500. 127,500 % 32749 = 61,979, allowing for 61979 possible checksums reported
 	as SHORT.
@@ -45,7 +45,7 @@ public class Checksum {
 	/**
 	 * @author Henry Rheault
 	 * Reciever implementation of checksum, input message, checkSum short, and packetLength as short,
-	 * confirms or rejects checksum for new packet via boolean
+	 * confirms or rejects checksum for recieved packet via boolean.
 	 */
 	
 	public boolean checkChecksum(byte message[], char checkSum, short packetLength) {
